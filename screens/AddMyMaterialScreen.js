@@ -18,7 +18,7 @@ const AddMyMaterialScreen = ({navigation}) => {
     const [items, setItems] = useState([
       {label: 'Books', value: 'books'},
       {label: 'Class Notes', value: 'notes'},
-      {label: 'Exam Study Guides', value: 'exam guides'},
+      {label: 'Exam Study Guides', value: 'examGuides'},
       {label: 'Class Materials', value: 'materials'},
       {label: 'Supplies', value: 'supplies'},
       {label: 'Educational Videos', value: 'videos'},
@@ -40,7 +40,7 @@ const AddMyMaterialScreen = ({navigation}) => {
                 category: category,
                 points: points, 
                 author: author,
-                duration: duration,
+                tradeDuration: duration,
                 notes: notes,
                 isDigital: isDigital,
                 status: 'available',
@@ -58,7 +58,7 @@ const AddMyMaterialScreen = ({navigation}) => {
 
     return (
         <SafeAreaView style={{margin:10}}>
-            <Text variant="titleLarge">Add My Material</Text>
+            <Text variant="titleLarge" style={{marginVertical:20}}>Add My Material</Text>
             <DropDownPicker
                 open={open}
                 value={category}
@@ -85,12 +85,12 @@ const AddMyMaterialScreen = ({navigation}) => {
             right={() => (
                 <Switch value={isDigital} onValueChange={onToggleSwitch} />
             )}/>
-            <View style={{flexDirection:'row', justifyContent:'space-around'}}>
+            <View style={{flexDirection:'row', justifyContent:'space-around', marginTop:20}}>
             <Button icon="plus-circle" mode="contained" onPress={addMaterial} style={{ width: 150 }} >
                 Add Material
             </Button>
             <Button icon="cancel" mode="contained" onPress={()=>navigation.navigate('Home')} style={{ width: 150 }} >
-                Cacel
+                Cancel
             </Button>
             </View>
         </SafeAreaView>

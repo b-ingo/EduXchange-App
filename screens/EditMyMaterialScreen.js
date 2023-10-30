@@ -12,15 +12,15 @@ const EditMyMaterialScreen = ({navigation, route}) => {
     const [description, setDescription] = useState(material.description);
     const [subject, setSubject] = useState(material.subject);
     const [category, setCategory] = useState(material.category);
-    const [duration, setDuration] = useState("");
-    const [points, setPoints] = useState("");
-    const [author, setAuthor] = useState("");
-    const [notes, setNotes] = useState("");
+    const [duration, setDuration] = useState(material.tradeDuration);
+    const [points, setPoints] = useState(material.points);
+    const [author, setAuthor] = useState(material.author);
+    const [notes, setNotes] = useState(material.notes);
     const [open, setOpen] = useState(false);
     const [items, setItems] = useState([
       {label: 'Books', value: 'books'},
       {label: 'Class Notes', value: 'notes'},
-      {label: 'Exam Study Guides', value: 'exam guides'},
+      {label: 'Exam Study Guides', value: 'examGuides'},
       {label: 'Class Materials', value: 'materials'},
       {label: 'Supplies', value: 'supplies'},
       {label: 'Educational Videos', value: 'videos'},
@@ -45,7 +45,7 @@ const EditMyMaterialScreen = ({navigation, route}) => {
                 category: category,
                 points: points, 
                 author: author,
-                duration: duration,
+                tradeDuration: duration,
                 notes: notes,
                 isDigital: isDigital,
                 status: 'available',
@@ -62,7 +62,7 @@ const EditMyMaterialScreen = ({navigation, route}) => {
 
     return (
         <SafeAreaView style={{margin:10}}>
-            <Text variant="titleLarge">Edit My Material</Text>
+            <Text variant="titleLarge" style={{marginVertical:30}}>Edit My Material</Text>
             <DropDownPicker
                 open={open}
                 value={category}
@@ -89,12 +89,12 @@ const EditMyMaterialScreen = ({navigation, route}) => {
             right={() => (
                 <Switch value={isDigital} onValueChange={onToggleSwitch} />
             )}/>
-            <View style={{flexDirection:'row', justifyContent:'space-around'}}>
+            <View style={{flexDirection:'row', justifyContent:'space-around', marginTop:20}}>
             <Button icon="file-document-edit-outline" mode="contained" onPress={editMaterial} style={{ width: 150 }} >
                 Save
             </Button>
             <Button icon="cancel" mode="contained" onPress={()=>navigation.navigate('Home')} style={{ width: 150 }} >
-                Cacel
+                Cancel
             </Button>
             </View>
         </SafeAreaView>

@@ -3,7 +3,7 @@ import { Text, TextInput, Button, Switch, List } from 'react-native-paper';
 import React , {useState} from 'react'
 import DropDownPicker from 'react-native-dropdown-picker';
 import {db, auth} from "../firebase"
-import { collection, addDoc } from "firebase/firestore"; 
+import { collection, addDoc, Timestamp } from "firebase/firestore"; 
 import HomeScreen from './HomeScreen';
 
 const AddMyNeedScreen = ({navigation}) => {
@@ -18,7 +18,7 @@ const AddMyNeedScreen = ({navigation}) => {
     const [items, setItems] = useState([
       {label: 'Books', value: 'books'},
       {label: 'Class Notes', value: 'notes'},
-      {label: 'Exam Study Guides', value: 'exam guides'},
+      {label: 'Exam Study Guides', value: 'examGuides'},
       {label: 'Class Materials', value: 'materials'},
       {label: 'Supplies', value: 'supplies'},
       {label: 'Educational Videos', value: 'videos'},
@@ -59,7 +59,7 @@ const AddMyNeedScreen = ({navigation}) => {
 
     return (
         <SafeAreaView style={{margin:7}}>
-            <Text variant="titleLarge">Add My Needs</Text>
+            <Text variant="titleLarge" style={{marginVertical:30}}>Add My Needs</Text>
             <DropDownPicker
                 open={open}
                 value={category}
@@ -85,7 +85,7 @@ const AddMyNeedScreen = ({navigation}) => {
             right={() => (
                 <Switch value={isDigital} onValueChange={onToggleSwitch} />
             )}/>
-            <View style={{flexDirection:'row', justifyContent:'space-around'}}>
+            <View style={{flexDirection:'row', justifyContent:'space-around', marginTop:20}}>
             <Button icon="plus-circle" mode="contained" onPress={addRequest}>
                 Add Request
             </Button>

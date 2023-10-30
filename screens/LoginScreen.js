@@ -5,11 +5,13 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import {db, auth} from '../firebase'
 import {setDoc, doc } from "firebase/firestore"; 
 
-const LogInScreen = ({navigation}) => {
+const LogInScreen = ({navigation, route}) => {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [loginFailed, setLoginFailed] = useState(false); // State to track login status
 
+    let isFromSignUp = false
+    isFromSignUp = route?.params?.isFromSignUp ?? false;
 
     //test login: student6@gmail.com
     const logIn = async () => {
@@ -31,7 +33,7 @@ const LogInScreen = ({navigation}) => {
     }
 
   return (
-    <SafeAreaView style={{flex:1, magin:5, justifyContent:'center'}}>
+    <SafeAreaView style={{flex:1, magin:15, }}>
       <Image
         source={require("../assets/logo.png")}
         style={styles.logo}
@@ -41,13 +43,18 @@ const LogInScreen = ({navigation}) => {
           <Text style={styles.errorText}>Login failed. Please try again.</Text>
         </View>
       )}
+      {isFromSignUp && ( // Render the message for successful sign up
+        <Text style={{fontSize: 16, color: '#3c763d', margin:10}}>
+        Congratulations! You have signed up successfully, please login.
+      </Text>
+      )}
       <TextInput style={styles.input} label="Email" autoCapitalize='none' value={email} onChangeText={setEmail} />
       <TextInput style={styles.input} label="Password" autoCapitalize='none' value={password} onChangeText={setPassword} secureTextEntry/>
       <View style={{marginTop:30, marginHorizontal:20}}>
       <Button icon="login-variant" mode="contained" onPress={logIn}>
         Log In
       </Button>  
-      <Button style={{marginVertical:10}}icon="login-variant" mode="contained" onPress={()=>navigation.navigate('SignUp')}>
+      <Button style={{marginVertical:10}}icon="clipboard-account-outline" mode="contained" onPress={()=>navigation.navigate('SignUp')}>
         Sign Up
       </Button>
       </View>

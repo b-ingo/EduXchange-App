@@ -79,6 +79,11 @@ const SearchScreen = ({navigation}) => {
                 <Picker.Item label="Select a category" />
                 <Picker.Item label="Books" value="books" />
                 <Picker.Item label="Notes" value="notes" />
+                <Picker.Item label="Exam guides" value="examGuides" />
+                <Picker.Item label="Class materials" value="materials" />
+                <Picker.Item label="School supplies" value="supplies" />
+                <Picker.Item label="Videos" value="videos" />
+                <Picker.Item label="Tutoring" value="tutoring" />
             </Picker>
             </View>
 }

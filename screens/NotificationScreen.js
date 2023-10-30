@@ -63,7 +63,7 @@ const NotificationScreen = () => {
             <View style={{ flexDirection: 'row', justifyContent: 'space-between', margin: 5 }}>
               <Text style={{ fontWeight: item.isRead ? 'normal':'bold'   }}>{item.materialTitle}</Text>
               <Text style={{ fontWeight: item.isRead ? 'normal':'bold' }}>{item.message}</Text>
-              <Text style={{ fontWeight: item.isRead ? 'normal':'bold' }}>{item.createdDateTime.toDate().toDateString()}</Text>
+              <Text style={{ fontWeight: item.isRead ? 'normal':'bold' }}>{item.sentDate?.toDate().toDateString()}</Text>
             </View>
           </TouchableOpacity>
             <Divider />
@@ -80,7 +80,7 @@ const NotificationScreen = () => {
           <Card>
           <Card.Title
             title={selectedMessage.materialTitle}
-            subtitle={selectedMessage.createdDateTime.toDate().toDateString()}
+            subtitle={selectedMessage.createdDateTime?.toDate().toDateString()}
             right={(props) => <IconButton {...props} icon="delete" iconColor='purple' onPress={deleteMessage} />}
           />
           <Card.Content>

@@ -7,6 +7,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import {LogBox} from 'react-native';
 
 import HomeScreen from './screens/HomeScreen';
 import SearchScreen from './screens/SearchScreen'
@@ -20,6 +21,9 @@ import PointHistoryScreen from './screens/PointHistoryScreen';
 import EditMyMaterialScreen from './screens/EditMyMaterialScreen';
 import EditMyNeedScreen from './screens/EditMyNeedScreen';
 import UserInfoScreen from './screens/UserInfoScreen';
+
+// Ignore all log notifications:
+LogBox.ignoreAllLogs();
 
 const HomeStack = () => { 
   const Stack = createNativeStackNavigator()
